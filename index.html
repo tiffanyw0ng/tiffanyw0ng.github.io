@@ -1,1 +1,641 @@
-<h1>Welcome to My Site!</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiffany Wong | Portfolio</title>
+    <style>
+        :root {
+            --primary: #6C63FF;
+            --dark: #2F2E41;
+            --light: #F9F9F9;
+            --accent: #FF6584;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            margin: 0;
+            padding: 0;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            height: 100px;
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+        }
+        
+        .logo {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+        
+        .nav-links a {
+            margin-left: 2.5rem;
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 4rem auto 0;
+            padding: 0 2rem;
+        }
+        
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 35vh;
+            padding: 180px 100px;
+            gap: 6rem;
+            margin: 0 auto;
+            max-width: 1400px;
+        }
+        
+        .hero-text {
+            flex: 1;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .hero-text h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+        
+        .hero-text .tagline {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-text p {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            margin-bottom: 2rem;
+            color: #666;
+        }
+        
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 500px;
+        }
+        
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .btn.full-width {
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(108, 99, 255, 0.2);
+        }
+        
+        section {
+            padding: 3rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2.5rem;
+            color: var(--dark);
+        }
+        
+        .section-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .project-image {
+            height: 200px;
+            background-color: #eee;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .project-info {
+            padding: 1.5rem;
+        }
+        
+        .project-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .project-links a {
+            margin-right: 1rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 3rem;
+        }
+        
+        footer .content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1rem 0;
+        }
+        
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--primary);
+        }
+        
+        @media (max-width: 1200px) {
+            .hero {
+                padding: 150px 50px;
+                gap: 4rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                height: 70px;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .nav-links a {
+                margin-left: 1.5rem;
+                font-size: 1rem;
+            }
+
+            .hero {
+                flex-direction: column;
+                padding: 100px 30px;
+                gap: 3rem;
+            }
+
+            .hero-text {
+                align-items: center;
+                text-align: center;
+                max-width: 600px;
+            }
+
+            .hero-image {
+                width: 100%;
+                max-width: 400px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 80px 20px;
+            }
+
+            .hero-text h1 {
+                font-size: clamp(2rem, 8vw, 2.5rem);
+            }
+
+            .hero-image {
+                max-width: 300px;
+            }
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 4rem;
+            margin-bottom: 3rem;
+            padding: 0 2rem;
+        }
+
+        .about-column {
+            min-width: 0;
+        }
+
+        .about-column h3 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-column p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .resume-box {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .resume-box h4 {
+            margin: 0 0 1rem 0;
+            color: var(--dark);
+        }
+
+        .resume-box .btn {
+            display: inline-block;
+            width: auto;
+            padding: 0.8rem 2rem;
+        }
+
+        .timeline-container {
+            position: relative;
+            max-width: 800px;
+            margin: 3rem auto 0;
+        }
+
+        .timeline-item {
+            padding-left: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 0;
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 50%;
+            top: 5px;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .skills-section {
+            margin-top: 2rem;
+        }
+
+        .skills-section h4 {
+            color: var(--dark);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .skill-tag {
+            background: rgba(108, 99, 255, 0.1);
+            color: var(--primary);
+            padding: 0.8rem 1.5rem;
+            border-radius: 20px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 0 1rem;
+            }
+
+            .about-column h3 {
+                font-size: 1.8rem;
+                text-align: center;
+            }
+
+            .skills-section h4 {
+                font-size: 1.3rem;
+                text-align: center;
+            }
+
+            .skills-grid {
+                justify-content: center;
+            }
+
+            .skill-tag {
+                font-size: 1rem;
+                padding: 0.6rem 1.2rem;
+            }
+        }
+
+        #contact {
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        #contact .section-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        #contact p {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        #contact .btn {
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">tiffanyw0ng</div>
+            <div class="nav-links">
+                <a href="#about">About Me</a>
+                <a href="#experience">Education & Experience </a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="hero">
+            <div class="hero-text">
+                <h1>Hi! I'm Tiffany Rosalyn Wong.</h1>
+                <p class="tagline">Data Science & Economics Student</p>
+                <p>I build data dashboards and AI extensions..</p>
+                <a href="#projects" class="btn">View My Work</a>
+            </div>
+            <div class="hero-image">
+                <svg width="400" height="400" viewBox="0 0 600 600">
+                     <image href="headshotcropped.jpg" width="600" height="600" />
+                </svg>
+                <!-- xmlns="http://www.w3.org/2000/svg"> -->
+                    <circle cx="300" cy="300" r="250" fill="#6C63FF" opacity="0.1"/>
+                    <circle cx="350" cy="250" r="100" fill="#6C63FF" opacity="0.2"/>
+                    <circle cx="250" cy="350" r="70" fill="#FF6584" opacity="0.2"/>
+                </svg>
+            </div>
+        </section>
+        
+        <section id="about">
+            <h2 class="section-title">About Me</h2>
+            <div class="section-content">
+                <div class="about-grid">
+                    <!-- Left Column -->
+                    <div class="about-column">
+                        <h3 style="color: var(--primary); margin-bottom: 1rem;">Who I Am</h3>
+                        <p>I'm a passionate data scientist with experience in web design, front-end development, and creative problem solving. I love turning ideas into reality through code and data analysis.</p>
+                        <p>When I'm not coding, you can find me exploring new technologies, contributing to open source projects, or creating digital art.</p>
+                        <br>
+                        <div class="resume-box">
+                            <h4>Want my full resume?</h4>
+                            <a href="Tiffany_Rosalyn_Resume .pdf" download class="btn">
+                                Download Resume
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Column -->
+                    <div class="about-column">
+                        <h3>My Skills</h3>
+                        
+                        <div class="skills-section">
+                            <h4>Languages</h4>
+                            <div class="skills-grid">
+                                <div class="skill-tag">Python</div>
+                                <div class="skill-tag">R</div>
+                                <div class="skill-tag">SQL</div>
+                                <div class="skill-tag">JavaScript</div>
+                            </div>
+                        </div>
+                        
+                        <div class="skills-section">
+                            <h4>Data Science</h4>
+                            <div class="skills-grid">
+                                <div class="skill-tag">Pandas</div>
+                                <div class="skill-tag">NumPy</div>
+                                <div class="skill-tag">TensorFlow</div>
+                                <div class="skill-tag">PowerBI</div>
+                            </div>
+                        </div>
+                        
+                        <div class="skills-section">
+                            <h4>Web Development</h4>
+                            <div class="skills-grid">
+                                <div class="skill-tag">HTML/CSS</div>
+                                <div class="skill-tag">React</div>
+                                <div class="skill-tag">Node.js</div>
+                                <div class="skill-tag">Flask</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <section id="experience">
+                <h3 style="color: var(--primary); text-align: center; margin-bottom: 2rem;">Education & Experience</h3>
+            
+                <div class="timeline-container">
+                    <!-- Timeline item -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>University of Michigan</h4>
+                            <p>B.S. Data Science & Economics | 2024-2027</p>
+                            <p>Coursework: Data Structures & Algorithms, Python for  Linear Algebra</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Timeline item -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>AI Research Intern</h4>
+                            <p>TenX  | Summer 2025</p>
+                            <p>Explore RAG pipelines and AI agents for quantitative trading</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Timeline item -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>Project Lead and Front End Developer</h4>
+                            <p>Innovation for Impact  | 2024-2025</p>
+                            <p>Managed and lead team to create website for nonprofit Building Community Value</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="projects">
+            <h2 class="section-title">My Projects</h2>
+            <div class="section-content">
+                <div class="projects-grid">
+
+                    <div class="project-card">
+                        <div class="project-image" style="background-color: #59b7ff;"></div>
+                        <div class="project-info">
+                            <h3 class="project-title">Crude Oil Forecasting Model  </h3>
+                            <p>Time-series forecasting pipeline for crude oil prices</p>
+                            <div class="project-links">
+                                <a href="#">https://tiffanyw0ng.github.io/crude_oil_forecasting/report.html</a>
+                                <a href="https://github.com/tiffanyw0ng/crude_oil_forecasting">Source Code</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image" style="background-color: #FF6584;"></div>
+                        <div class="project-info">
+                            <h3 class="project-title">NYC 311 requests analysis </h3>
+                            <p>SQL-based queries to investigate data.</p>
+                            <div class="project-links">
+                                <a href="#">View Live</a>
+                                <a href="#">Source Code</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image" style="background-color: #6C63FF;"></div>
+                        <div class="project-info">
+                            <h3 class="project-title">Portfolio Website</h3>
+                            <p>A responsive portfolio site built with HTML/CSS and deployed on GitHub Pages.</p>
+                            <div class="project-links">
+                                <a href="https://tiffanyw0ng.github.io/">View Live</a>
+                                <a href="https://github.com/tiffanyw0ng/tiffanyw0ng.github.io">Source Code</a>
+                            </div>
+                        </div>
+                    </div>
+<!--                     
+                    
+                    <div class="project-card">
+                        <div class="project-image" style="background-color: #2F2E41;"></div>
+                        <div class="project-info">
+                            <h3 class="project-title">Weather Dashboard</h3>
+                            <p>Real-time weather application using API integration and geolocation.</p>
+                            <div class="project-links">
+                                <a href="#">View Live</a>
+                                <a href="#">Source Code</a>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>3
+        </section>
+        
+        <section id="contact">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="section-content" style="text-align: center;">
+                <p>tiffanyroswong@gmail.com</p>
+                <p>+1 (734) 819-0170 / +852 6840-8740</p>
+                <br>
+                <a href="mailto:tiffanyroswong@gmail.com" class="btn">Email Me</a>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="content">
+            <div class="social-links">
+                <a href="https://github.com/tiffanyw0ng">GitHub</a>
+                <a href="https://www.linkedin.com/in/tiffany-rosalyn-wong-2a68b7238/">LinkedIn</a>
+                <a href="https://www.instagram.com/tiffanyxxwong/">Instagram</a>
+            </div>
+            <p>Prefer email over text for communication due to changing countries/phone numbers over holidays.</p>
+        </div>
+    </footer>
+</body>
+</html>
